@@ -1,0 +1,39 @@
+.menu{
+    background: #BD5D38;
+    height: 2100px;
+    /* position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden; */
+    padding-top: 20px;
+    text-align: center;
+    
+}
+
+.menu a {
+    font-family: 'Teko', sans-serif;
+    text-decoration: none;
+    font-size: 24px;
+    color: #EED6CD;
+    display: block;
+  }
+
+  .menu a:hover{
+    font-size: 26px;
+    color: white;
+  }
+
+  .menu a:active{
+    font-size: 26px;
+    color: white;
+  }
+
+  .menulist{
+      margin-top: 50px;
+      list-style: none;
+  }
+
+  @media screen and (max-height: 860px) {
+    .menu {height: 860px;}
+  }
