@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-sm-12">
-        <div *ngFor="let author of authors | paginate: { itemsPerPage: limit, currentPage: p, totalItems: totalItems }" class="col-sm-6">
-            <app-list-item [author] = "author" (loadAuthorEvent)="loadFavoriteAuthor($event)" ></app-list-item>
+        <div *ngFor="let author of favoriteAuthors | paginate: { itemsPerPage: limit, currentPage: p, totalItems: totalItems }" class="col-sm-6">
+            <app-list-item [author] = "author" (loadAuthorEvent)="loadFavoriteAuthors()" ></app-list-item>
         </div>
     </div>
 </div>

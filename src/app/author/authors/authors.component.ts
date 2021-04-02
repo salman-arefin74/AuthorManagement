@@ -10,7 +10,6 @@ import { AuthorService } from 'src/app/Services/author.service';
 export class AuthorsComponent implements OnInit {
   authors: Author[] = [];
   favoriteAuthors: Author[] = [];
-  author : Author;
   p: number = 1;
   limit: number = 10;
   skip : number = 0;

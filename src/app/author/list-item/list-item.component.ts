@@ -16,10 +16,6 @@ export class ListItemComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  loadFavoriteAuthors(){
-    this.favoriteAuthors = this.authorService.getFavoriteAuthors();
-  }
-
   AddRemoveFavorite(_author){
     
     this.author = _author;
@@ -28,13 +24,10 @@ export class ListItemComponent implements OnInit {
 
     if(this.author.isFavoriteAuthor){
       this.authorService.addFavorite(this.author);
-      this.loadFavoriteAuthors();
     }
     else{
       this.authorService.removeFavorite(this.author);
-      this.loadFavoriteAuthors();  
-      this.loadAuthorEvent.emit(this.author);
+      this.loadAuthorEvent.emit();
     }
-      
   }
 }

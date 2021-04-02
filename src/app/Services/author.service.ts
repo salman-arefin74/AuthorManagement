@@ -11,6 +11,13 @@ export class AuthorService {
   
   url : string = "https://api.quotable.io/authors";
   
+  initializeFavoriteList(){
+    if(localStorage.getItem('FavoriteAuthors') === null || localStorage.getItem('FavoriteAuthors') == undefined) {
+      let favoriteAuthorEntry = [];
+      localStorage.setItem('FavoriteAuthors', JSON.stringify(favoriteAuthorEntry));
+    }
+  }
+
   getAuthors(){
       return this.http.get<Author[]>(this.url);
   }
@@ -20,31 +27,19 @@ export class AuthorService {
   }
 
   getFavoriteAuthors(){
-    if(localStorage.getItem('FavoriteAuthors') === null || localStorage.getItem('FavoriteAuthors') == undefined) {
-      let favoriteAuthorEntry = [
-      ];
-      localStorage.setItem('FavoriteAuthors', JSON.stringify(favoriteAuthorEntry));
-    }
-
+    this.initializeFavoriteList();
     let favoriteAuthors = JSON.parse(localStorage.getItem('FavoriteAuthors'));
     return favoriteAuthors;
   }
 
   addFavorite(favoriteAuthor) {
-    
-    if(localStorage.getItem('FavoriteAuthors') === null || localStorage.getItem('FavoriteAuthors') == undefined) {
-      let favoriteAuthorEntry = [
-      ];
-      localStorage.setItem('FavoriteAuthors', JSON.stringify(favoriteAuthorEntry));
-    }
-    
+    this.initializeFavoriteList();
     let favoriteAuthors = JSON.parse(localStorage.getItem('FavoriteAuthors'));
     favoriteAuthors.push(favoriteAuthor);
     localStorage.setItem('FavoriteAuthors', JSON.stringify(favoriteAuthors));
   }
 
   removeFavorite(favoriteAuthor){
-    
     let favoriteAuthors = JSON.parse(localStorage.getItem('FavoriteAuthors'));
     var index = favoriteAuthors.findIndex(i => i._id === favoriteAuthor._id);
     favoriteAuthors.splice(index, 1);

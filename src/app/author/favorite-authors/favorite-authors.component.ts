@@ -8,9 +8,7 @@ import { AuthorService } from 'src/app/Services/author.service';
   styleUrls: ['./favorite-authors.component.css']
 })
 export class FavoriteAuthorsComponent implements OnInit {
-
-  authors: Author[] = [];
-  author : Author;
+  favoriteAuthors: Author[] = [];
   p: number = 1;
   limit: number = 10;
   skip : number = 0;
@@ -27,13 +25,8 @@ export class FavoriteAuthorsComponent implements OnInit {
   }
 
   loadFavoriteAuthors(){
-    this.authors = this.authorService.getFavoriteAuthors();
-    this.totalItems = this.authors.length;
-  }
-
-  loadFavoriteAuthor(author: Author){
-    this.authors = this.authorService.getFavoriteAuthors();
-    this.totalItems = this.authors.length;
+    this.favoriteAuthors = this.authorService.getFavoriteAuthors();
+    this.totalItems = this.favoriteAuthors.length;
   }
 
 }
