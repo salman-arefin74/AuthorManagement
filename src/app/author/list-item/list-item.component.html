@@ -1,1 +1,24 @@
-<p>list-item works!</p>
+<div class="panel panel-default">     
+    <div class="panel-body" style="height: 300px;">
+        <div class="row">
+            <div class="col-md-12">
+                <button class="btn-sm btn btn-success" style="float: right;" (click)="AddRemoveFavorite(author)">
+                    {{ author.isFavoriteAuthor == false ? 'Add Favorite' : 'Remove Favorite' }}
+                </button>
+            </div>
+        </div>
+        <label  style="cursor:pointer;">
+            <h3>{{author.name}}</h3>
+        </label>
+    
+        <article class="bio marginTop10">
+            <div>{{author.bio}}</div>
+        </article>
+
+        <br>
+
+        <label style="cursor:pointer;">
+            <a href="{{author.link}}"  target="_blank">{{author.link}}</a>
+        </label>
+    </div>
+</div>

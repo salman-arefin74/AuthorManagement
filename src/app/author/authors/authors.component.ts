@@ -50,15 +50,4 @@ export class AuthorsComponent implements OnInit {
     this.favoriteAuthors = this.authorService.getFavoriteAuthors();
   }
 
-  AddRemoveFavorite(_author){
-    this.author = _author;
-    
-    this.author.isFavoriteAuthor = this.author.isFavoriteAuthor === true ? false : true ;
-
-    if(this.author.isFavoriteAuthor)
-      this.authorService.addFavorite(this.author);
-    else
-    this.authorService.removeFavorite(this.author);
-  }
-
 }

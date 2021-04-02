@@ -44,8 +44,9 @@ export class AuthorService {
   }
 
   removeFavorite(favoriteAuthor){
+    
     let favoriteAuthors = JSON.parse(localStorage.getItem('FavoriteAuthors'));
-    var index = favoriteAuthors.indexOf(favoriteAuthor);
+    var index = favoriteAuthors.findIndex(i => i._id === favoriteAuthor._id);
     favoriteAuthors.splice(index, 1);
     localStorage.setItem('FavoriteAuthors', JSON.stringify(favoriteAuthors));
   }

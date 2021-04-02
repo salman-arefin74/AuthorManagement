@@ -31,16 +31,9 @@ export class FavoriteAuthorsComponent implements OnInit {
     this.totalItems = this.authors.length;
   }
 
-  AddRemoveFavorite(_author){
-    this.author = _author;
-    !this.author.isFavoriteAuthor;
-
-    if(this.author.isFavoriteAuthor){
-      this.authorService.removeFavorite(this.author);
-      this.loadFavoriteAuthors();
-    }
-      
-    else
-    this.authorService.addFavorite(this.author);
+  loadFavoriteAuthor(author: Author){
+    this.authors = this.authorService.getFavoriteAuthors();
+    this.totalItems = this.authors.length;
   }
+
 }

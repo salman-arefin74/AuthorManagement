@@ -43,12 +43,16 @@
   
   }
   
-  
   @media screen and (max-width: 400px) {
     .menu a {
       text-align: center;
       float: none;
     }
+  }
+
+  .active { 
+    border: solid; 
+    border-color: white;
   }
   
   
