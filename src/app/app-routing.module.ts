@@ -6,11 +6,7 @@ const routes: Routes = [
     path: '',
     loadChildren: () => import('./author/author.module').then(m => m.AuthorModule)
   },
-  // {
-  //   path: '',
-  //   redirectTo: '/author',
-  //   pathMatch: 'full'
-  // }
+  
 ];
 
 @NgModule({

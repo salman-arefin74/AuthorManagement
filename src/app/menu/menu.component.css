@@ -1,39 +1,55 @@
-.menu{
-    background: #BD5D38;
-    height: 2100px;
-    /* position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    overflow-x: hidden; */
-    padding-top: 20px;
-    text-align: center;
-    
-}
 
-.menu a {
+.menu {
+    margin: 0;
+    padding: 0;
+    width: 300px;
+    background: #3867bd;
+    position: fixed;
+    height: 100%;
+    overflow-y: auto;
+    text-align: center;
+  }
+  
+  .menu a {
     font-family: 'Teko', sans-serif;
     text-decoration: none;
     font-size: 24px;
     color: #EED6CD;
     display: block;
   }
-
+  
   .menu a:hover{
     font-size: 26px;
     color: white;
   }
-
+  
   .menu a:active{
     font-size: 26px;
     color: white;
   }
-
+  
   .menulist{
       margin-top: 50px;
       list-style: none;
   }
-
-  @media screen and (max-height: 860px) {
-    .menu {height: 860px;}
+  
+  @media screen and (max-width: 600px) {
+    .menu {
+      width: 100%;
+      height: auto;
+      position: relative;
+      text-align: center;
+    }
+  
   }
+  
+  
+  @media screen and (max-width: 400px) {
+    .menu a {
+      text-align: center;
+      float: none;
+    }
+  }
+  
+  
+  
