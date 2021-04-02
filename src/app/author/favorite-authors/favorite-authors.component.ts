@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Author } from 'src/app/Models/author';
+import { AuthorService } from 'src/app/Services/author.service';
 
 @Component({
   selector: 'app-favorite-authors',
@@ -7,9 +9,38 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FavoriteAuthorsComponent implements OnInit {
 
-  constructor() { }
+  authors: Author[] = [];
+  author : Author;
+  p: number = 1;
+  limit: number = 10;
+  skip : number = 0;
+  totalItems: any;
+  constructor(public authorService : AuthorService) { }
 
-  ngOnInit(): void {
+   ngOnInit(): void {
+    this.loadFavoriteAuthors();
   }
 
+  onPageChange = (pageNumber) => {
+      this.skip = (pageNumber - 1) * this.limit;
+      this.loadFavoriteAuthors();
+  }
+
+  loadFavoriteAuthors(){
+    this.authors = this.authorService.getFavoriteAuthors();
+    this.totalItems = this.authors.length;
+  }
+
+  AddRemoveFavorite(_author){
+    this.author = _author;
+    !this.author.isFavoriteAuthor;
+
+    if(this.author.isFavoriteAuthor){
+      this.authorService.removeFavorite(this.author);
+      this.loadFavoriteAuthors();
+    }
+      
+    else
+    this.authorService.addFavorite(this.author);
+  }
 }

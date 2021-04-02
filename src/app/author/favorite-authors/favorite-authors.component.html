@@ -1,1 +1,34 @@
-<p>favorite-authors works!</p>
+<div class="row">
+    <div class="col-sm-12">
+        <div *ngFor="let author of authors | paginate: { itemsPerPage: limit, currentPage: p, totalItems: totalItems }" class="col-sm-6">
+            <div class="panel panel-default">     
+                <div class="panel-body" style="height: 250px;">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button class="btn-sm btn btn-success" style="float: right;" (click)="AddRemoveFavorite(author)">
+                                {{ author.isFavoriteAuthor == false ? 'Add Favorite' : 'Remove Favorite' }}
+                            </button>
+                        </div>
+                    </div>
+                    <label  style="cursor:pointer;">
+                        <h3>{{author.name}}</h3>
+                    </label>
+                
+                    <article class="bio marginTop10">
+                        <div>{{author.bio}}</div>
+                    </article>
+        
+                    <br>
+        
+                    <label style="cursor:pointer;">
+                        <a href="{{author.link}}"  target="_blank">{{author.link}}</a>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <pagination-controls (pageChange) = "onPageChange(p = $event)"></pagination-controls>
+</div>
