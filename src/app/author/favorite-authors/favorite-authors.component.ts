@@ -13,6 +13,7 @@ export class FavoriteAuthorsComponent implements OnInit {
   limit: number = 10;
   skip : number = 0;
   totalItems: any;
+  NoFavoriteAuthor : boolean;
   constructor(public authorService : AuthorService) { }
 
    ngOnInit(): void {
@@ -27,6 +28,11 @@ export class FavoriteAuthorsComponent implements OnInit {
   loadFavoriteAuthors(){
     this.favoriteAuthors = this.authorService.getFavoriteAuthors();
     this.totalItems = this.favoriteAuthors.length;
+    if(this.totalItems == 0)
+      this.NoFavoriteAuthor = true;
+    else
+      this.NoFavoriteAuthor = false;
+    
   }
 
 }

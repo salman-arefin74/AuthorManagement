@@ -17,7 +17,6 @@ export class ListItemComponent implements OnInit {
   }
 
   AddRemoveFavorite(_author){
-    
     this.author = _author;
     
     this.author.isFavoriteAuthor = this.author.isFavoriteAuthor === true ? false : true ;

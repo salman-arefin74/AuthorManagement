@@ -48,5 +48,4 @@ export class AuthorsComponent implements OnInit {
   loadFavoriteAuthors(){
     this.favoriteAuthors = this.authorService.getFavoriteAuthors();
   }
-
 }

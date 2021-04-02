@@ -24,13 +24,11 @@ export class AuthorService {
   }
 
   getAuthorsForPagination(a,b){
-    //debugger;
     this.SpinnerService.show(); 
     var result = this.http.get(this.url + `?limit=${a}&skip=${b}`);
-    //this.SpinnerService.hide();
     setTimeout(() => {
       this.SpinnerService.hide();
-    }, 1000);
+    }, 500);
     return result;
   }
 
