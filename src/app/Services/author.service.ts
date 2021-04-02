@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Author } from '../Models/Author';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthorService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private SpinnerService: NgxSpinnerService) { }
   
   url : string = "https://api.quotable.io/authors";
   
@@ -23,7 +24,14 @@ export class AuthorService {
   }
 
   getAuthorsForPagination(a,b){
-    return this.http.get(this.url + `?limit=${a}&skip=${b}`);
+    //debugger;
+    this.SpinnerService.show(); 
+    var result = this.http.get(this.url + `?limit=${a}&skip=${b}`);
+    //this.SpinnerService.hide();
+    setTimeout(() => {
+      this.SpinnerService.hide();
+    }, 1000);
+    return result;
   }
 
   getFavoriteAuthors(){
