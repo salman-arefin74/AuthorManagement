@@ -27,21 +27,18 @@ export class AuthorsComponent implements OnInit {
   }
 
   loadAuthors(){
-    this.authorService.getAuthorsForPagination(this.limit, this.skip).subscribe((response) => {
+    this.authorService.getAuthors(this.limit, this.skip).subscribe((response) => {
       this.authors = response['results'] as Author[];
       
       this.authors.forEach(element => {
-        var isFavoriteAuthor =  this.ContainsFavoriteAuthor(element, this.favoriteAuthors);
-        if(isFavoriteAuthor)
-          element.isFavoriteAuthor = true;
-        else
-          element.isFavoriteAuthor = false;
+        var isFavoriteAuthor =  this.containsFavoriteAuthor(element, this.favoriteAuthors);
+        element.isFavoriteAuthor = isFavoriteAuthor === true ? true : false;
       });
       this.totalItems = response['totalCount'];
     })
   }
 
-  ContainsFavoriteAuthor(obj, list) {
+  containsFavoriteAuthor(obj, list) {
     return list.some(elem => elem['_id'] === obj['_id']);
   }
 

@@ -19,11 +19,7 @@ export class AuthorService {
     }
   }
 
-  getAuthors(){
-      return this.http.get<Author[]>(this.url);
-  }
-
-  getAuthorsForPagination(a,b){
+  getAuthors(a,b){
     this.SpinnerService.show(); 
     var result = this.http.get(this.url + `?limit=${a}&skip=${b}`);
     setTimeout(() => {
@@ -34,8 +30,7 @@ export class AuthorService {
 
   getFavoriteAuthors(){
     this.initializeFavoriteList();
-    let favoriteAuthors = JSON.parse(localStorage.getItem('FavoriteAuthors'));
-    return favoriteAuthors;
+    return JSON.parse(localStorage.getItem('FavoriteAuthors'));
   }
 
   addFavorite(favoriteAuthor) {

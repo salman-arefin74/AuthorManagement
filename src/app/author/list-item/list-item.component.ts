@@ -9,14 +9,14 @@ import { AuthorService } from 'src/app/Services/author.service';
 })
 export class ListItemComponent implements OnInit {
   @Input('author') author: Author;
-  @Output() loadAuthorEvent = new EventEmitter<Author>();
+  @Output() refreshFavoriteAuthors = new EventEmitter<Author>();
   favoriteAuthors: Author[] = [];
   constructor(public authorService : AuthorService) { }
 
   ngOnInit(): void {
   }
 
-  AddRemoveFavorite(_author){
+  AddOrRemoveFavorite(_author){
     this.author = _author;
     
     this.author.isFavoriteAuthor = this.author.isFavoriteAuthor === true ? false : true ;
@@ -26,7 +26,7 @@ export class ListItemComponent implements OnInit {
     }
     else{
       this.authorService.removeFavorite(this.author);
-      this.loadAuthorEvent.emit();
+      this.refreshFavoriteAuthors.emit();
     }
   }
 }
